@@ -1,0 +1,15 @@
+# Runbook
+
+## Rotate Model Keys
+1. Update `.env` with new API keys (e.g., Pinecone, Hugging Face).
+2. Restart pods: `kubectl rollout restart deployment/lazy-ai -n lazy-ai`
+
+## Purge User Data
+Run: `python scripts/purge_user.py --user_id=123` (TODO: Implement script)
+
+## Run No-Answer Tests
+`cd model-pipeline && pytest tests/no_answer_suite/`
+
+## Add Curriculum
+1. Update `backend/config.py` with new standards.
+2. Reindex vector DB: `python scripts/reindex.py` (TODO: Implement)
