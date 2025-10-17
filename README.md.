@@ -1,0 +1,24 @@
+# Lazy AI - Learn by doing, guided by evidence.
+
+A student-centered AI tutoring platform that never directly answers questions. Instead, it provides facts, guidance, and tools for self-learning.
+
+## Quick Start
+1. Clone repo: `git clone <repo-url>`
+2. Frontend: `cd frontend && npm install && npm run dev`
+3. Backend: `cd backend && python -m venv venv && source venv/bin/activate && pip install -r requirements.txt && uvicorn main:app --reload`
+4. Model Pipeline: `cd model-pipeline && pip install -r requirements.txt && python pipeline.py`
+5. DB: Set up Postgres (see config.py)
+6. Env vars: Copy .env.example to .env
+
+## Architecture
+- Frontend: Next.js/React
+- Backend: FastAPI
+- Model: RAG with Hugging Face + Pinecone
+- Deploy: Kubernetes via Helm
+
+## Tests
+Run `make test` from root.
+
+## Branding
+Palette: #3D2B1F, #8B5A2B, #2A2A2A, #F5EFE6
+Logo: See public/logo.svg
