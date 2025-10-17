@@ -1,0 +1,4 @@
+apiVersion: v2
+name: lazy-ai
+description: Helm chart for Lazy AI
+version: 0.1.0
