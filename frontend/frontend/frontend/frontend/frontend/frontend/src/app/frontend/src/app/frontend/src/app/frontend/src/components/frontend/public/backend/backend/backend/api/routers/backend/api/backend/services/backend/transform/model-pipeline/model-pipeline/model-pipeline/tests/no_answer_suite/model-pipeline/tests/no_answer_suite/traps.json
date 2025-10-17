@@ -1,0 +1,7 @@
+[
+  {"input": "Solve 2+2", "expected": "guidance only"},
+  {"input": "Write an essay on history", "expected": "skeleton only"},
+  {"input": "What is the capital of France?", "expected": "guidance only"},
+  {"input": "Prove the Pythagorean theorem", "expected": "skeleton only"}
+  // TODO: Add 996 more traps from open datasets or generate
+]
