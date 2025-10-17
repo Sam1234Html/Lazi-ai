@@ -1,0 +1,46 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "Lazy AI API", "version": "1.0.0" },
+  "paths": {
+    "/v1/conversation": {
+      "post": {
+        "summary": "Start or continue conversation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": { "type": "string" },
+                  "curriculum_level": { "type": "string" },
+                  "message": { "type": "string" },
+                  "attachments": { "type": "array", "items": { "type": "string" } },
+                  "context_id": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "guidance": { "type": "array", "items": { "type": "string" } },
+                    "references": { "type": "array", "items": { "type": "string" } },
+                    "student_skeleton": { "type": "object" },
+                    "warnings": { "type": "array", "items": { "type": "string" } },
+                    "meta": { "type": "object" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
