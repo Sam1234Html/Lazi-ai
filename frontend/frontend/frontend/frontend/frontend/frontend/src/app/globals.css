@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Branding Palette */
+:root {
+  --deep-brown: #3D2B1F;
+  --warm-brown: #8B5A2B;
+  --near-black: #2A2A2A;
+  --paper-bg: #F5EFE6;
+}
+
+body {
+  background-color: var(--paper-bg);
+  color: var(--near-black);
+}
+
+/* Accessibility: High contrast */
+a { color: var(--deep-brown); }
+button { background-color: var(--warm-brown); color: white; }
