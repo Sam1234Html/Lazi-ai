@@ -1,0 +1,45 @@
+name: CI/CD
+on:
+  push:
+    branches: [ main ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run tests
+      run: ./infra/scripts/make_test.sh
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build images
+      run: ./infra/scripts/make_build.sh
+    - name: Push images
+      run: |
+        docker push lazy-ai-frontend:latest
+        docker push lazy-ai-backend:latest
+        docker push lazy-ai-model:latest
+      env:
+        DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
+  deploy-staging:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Deploy to staging
+      run: ./infra/scripts/make_deploy.sh staging
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+  promote-prod:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Manual approval
+      uses: trstringer/manual-approval@v1
+    - name: Deploy to prod
+      run: ./infra/scripts/make_deploy.sh prod
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
