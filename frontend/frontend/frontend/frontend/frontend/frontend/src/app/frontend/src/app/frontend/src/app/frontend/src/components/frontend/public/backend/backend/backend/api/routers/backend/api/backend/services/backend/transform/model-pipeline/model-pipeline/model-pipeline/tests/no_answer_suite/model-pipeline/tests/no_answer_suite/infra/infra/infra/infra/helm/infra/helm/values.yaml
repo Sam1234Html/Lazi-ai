@@ -1,0 +1,19 @@
+replicaCount: 3
+
+frontend:
+  image: lazy-ai-frontend:latest
+  port: 3000
+
+backend:
+  image: lazy-ai-backend:latest
+  port: 8000
+
+model:
+  image: lazy-ai-model:latest
+  port: 5000
+
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: false
